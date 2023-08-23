@@ -29,15 +29,16 @@ app.use(cors());
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-// app.use(express.static(path.join("../front", "dist")));
-
 app.use("/api/user", UserRoutes);
 
-// app.get("*", (req, res) => {
-//   const PathName = path.resolve("../front", "dist", "index.html");
+app.use(express.static(path.join(__dirname, './front/build')))
 
-//   res.sendFile(PathName);
-// });
+app.get('*',function(req,res){
+  res.sendFile(path.join(__dirname,'./front/build/index.html')),
+  function(err){
+    res.status(500).send(err);
+  }
+})
 
 app.listen(PORT || 8080, () => {
   connect();
