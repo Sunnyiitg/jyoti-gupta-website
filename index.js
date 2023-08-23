@@ -2,7 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import UserRoutes from "./routes/UserRoutes.js";
 import dotenv from "dotenv";
-// import path from "path";
+import path from "path";
 import cors from "cors";
 
 const PORT = process.env.PORT;
